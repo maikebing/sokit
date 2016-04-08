@@ -1,4 +1,4 @@
-#ifndef __TRANSFERSKT_H__
+﻿#ifndef __TRANSFERSKT_H__
 #define __TRANSFERSKT_H__
 
 #include <QHash>
@@ -18,7 +18,7 @@ public:
 	TransferSkt(QObject *parent=0);
 	virtual ~TransferSkt();
 
-	virtual QString name() const { return "General"; };
+    virtual QString name() const { return "General"; }
 
 	bool start(const QHostAddress& sip, quint16 spt, const QHostAddress& dip, quint16 dpt);
 	void kill(const QString& key);
@@ -26,11 +26,11 @@ public:
 
 	void send(const QString& key, bool s2d, const QString& data);
 
-	const QHostAddress& srcAddr() const { return m_sip; };
-	const QHostAddress& dstAddr() const { return m_dip; };
+    const QHostAddress& srcAddr() const { return m_sip; }
+    const QHostAddress& dstAddr() const { return m_dip; }
 
-	quint16 srcPort() const { return m_spt; };
-	quint16 dstPort() const { return m_dpt; };
+    quint16 srcPort() const { return m_spt; }
+    quint16 dstPort() const { return m_dpt; }
 
 signals:
 	void connOpen(const QString& key);
@@ -89,7 +89,7 @@ public:
 	TransferSktTcp(QObject *parent=0);
 	virtual ~TransferSktTcp();
 
-	virtual QString name() const { return "TCP"; };
+    virtual QString name() const { return "TCP"; }
 
 protected:
 	virtual bool open();
@@ -126,7 +126,7 @@ public:
 	TransferSktUdp(QObject *parent=0);
 	virtual ~TransferSktUdp();
 
-	virtual QString name() const { return "UDP"; };
+    virtual QString name() const { return "UDP"; }
 
 protected:
 	virtual bool open();

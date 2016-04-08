@@ -1,4 +1,4 @@
-#ifndef __BASEFORM_H__
+﻿#ifndef __BASEFORM_H__
 #define __BASEFORM_H__
 
 #include <QMutex>
@@ -19,9 +19,9 @@ public:
 	bool init();
 
 protected:
-	bool lock() { m_door.lock(); return true; };
-	bool lock(qint32 w) { return m_door.tryLock(w); };
-	void unlock() { m_door.unlock(); };
+    bool lock() { m_door.lock(); return true; }
+    bool lock(qint32 w) { return m_door.tryLock(w); }
+    void unlock() { m_door.unlock(); }
 
 	void initCounter(QLabel* r, QLabel* s);
 	void initLogger(QCheckBox* w, QToolButton* c, QTreeWidget* o, QPlainTextEdit* d);
@@ -37,7 +37,7 @@ protected:
 	virtual bool initHotkeys() =0;
 	virtual void initConfig() =0;
 	virtual void saveConfig() =0;
-    virtual void kill(QStringList& /*list*/) {};
+    virtual void kill(QStringList& /*list*/) {}
 	virtual void send(const QString& data, const QString& dir) =0;
 
 signals:
