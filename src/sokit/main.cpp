@@ -1,4 +1,4 @@
-#include <QTabWidget>
+﻿#include <QTabWidget>
 #include <QShortcut>
 #include <QFontDatabase>
 
@@ -58,6 +58,7 @@ void Sokit::initDefaultActionsName()
 
 bool Sokit::initTranslator()
 {
+#if 0
 	QString file = Setting::get(SET_SEC_CFG, SET_KEY_LANG, SET_VAL_LANG);
 
 	QStringList paths;
@@ -75,6 +76,10 @@ bool Sokit::initTranslator()
 			break;
 		}
 	}
+#else
+    m_trans.load(QString(":/sokit.qm"));
+    installTranslator(&m_trans);
+#endif
 
 	return true;
 }
