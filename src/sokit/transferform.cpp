@@ -118,8 +118,8 @@ void TransferForm::trigger(bool start)
 		IPAddr sa, da;
 		if (start)
 		{
-			start = TK::popIPAddr(m_ui.cmbSrcAddr, m_ui.cmbSrcPort, sa) &&
-					TK::popIPAddr(m_ui.cmbDstAddr, m_ui.cmbDstPort, da);
+			start = TK::popIPAddr(m_ui.cmbSrcAddr, m_ui.cmbSrcPort, nullptr, sa) &&
+					TK::popIPAddr(m_ui.cmbDstAddr, m_ui.cmbDstPort, nullptr, da);
 		}
 
 		if (start)
@@ -140,7 +140,7 @@ void TransferForm::trigger(bool start)
 				connect(m_server, SIGNAL(countSend(qint32)), this, SLOT(countSend(qint32)));
 				connect(m_server, SIGNAL(stopped()), this, SLOT(stop()));
 				
-				start = m_server->start(sa.ip, sa.port, da.ip, da.port);
+				start = m_server->start(sa.ip, sa.portR, da.ip, da.portR);
 				if (!start)
 				{
 					m_server->disconnect(this);

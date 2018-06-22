@@ -129,12 +129,12 @@ void ServerForm::trigger(bool start)
 
 	IPAddr addr;
 	if (start)
-		start = TK::popIPAddr(cbAddr, cbPort, addr);
+		start = TK::popIPAddr(cbAddr, cbPort, nullptr, addr);
 
 	lock();
 
 	if (start)
-		start = server->start(addr.ip, addr.port);
+		start = server->start(addr.ip, addr.portR);
 	else
 		server->stop();
 		

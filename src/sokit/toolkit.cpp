@@ -60,13 +60,20 @@ QString TK::ipstr(const QHostAddress& addr, quint16 port, bool tcp)
 	return QString("%1 %2").arg((tcp?"[TCP]":"[UDP]"),ipstr(addr,port));
 }
 
-bool TK::popIPAddr(QComboBox* ip, QComboBox* port, IPAddr& addr)
+bool TK::popIPAddr(QComboBox* ip, QComboBox* portR, QComboBox* portL, IPAddr& addr)
 {
-	QString sip = ip->currentText().trimmed();
-	QString spt = port->currentText().trimmed();
-
 	bool res = false;
-	addr.port = spt.toUShort(&res, 10);
+
+	QString sip = ip->currentText().trimmed();
+	QString sptR = portR->currentText().trimmed();
+	QString sptL;
+	if(portL)
+	{
+		sptL = portL->currentText().trimmed();
+		addr.portL = sptL.toUShort(&res, 10);
+	}
+
+	addr.portR = sptR.toUShort(&res, 10);
 	return (res && addr.ip.setAddress(sip));
 }
 

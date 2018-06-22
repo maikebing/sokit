@@ -9,80 +9,89 @@
         <translation type="unfinished">客户端</translation>
     </message>
     <message>
-        <location filename="clientform.ui" line="53"/>
+        <location filename="clientform.ui" line="62"/>
         <source>Network Setup</source>
         <translation type="unfinished">网络设置</translation>
     </message>
     <message>
-        <location filename="clientform.ui" line="95"/>
+        <location filename="clientform.ui" line="104"/>
         <source>Server IP:</source>
         <translation type="unfinished">服务器地址:</translation>
     </message>
     <message>
-        <location filename="clientform.ui" line="154"/>
         <source>Port:</source>
-        <translation type="unfinished">端口:</translation>
+        <translation type="obsolete">端口:</translation>
     </message>
     <message>
-        <location filename="clientform.ui" line="226"/>
+        <location filename="clientform.ui" line="288"/>
         <source>TCP Connect</source>
         <translation type="unfinished">TCP 连接</translation>
     </message>
     <message>
-        <location filename="clientform.ui" line="257"/>
+        <location filename="clientform.ui" line="319"/>
         <source>UDP Channel</source>
         <translation type="unfinished">UDP 通道</translation>
     </message>
     <message>
-        <location filename="clientform.ui" line="317"/>
+        <location filename="clientform.ui" line="379"/>
         <source>Buf 1:</source>
         <translation type="unfinished">数据1:</translation>
     </message>
     <message>
-        <location filename="clientform.ui" line="310"/>
-        <location filename="clientform.ui" line="336"/>
-        <location filename="clientform.ui" line="378"/>
-        <location filename="clientform.ui" line="420"/>
+        <location filename="clientform.ui" line="372"/>
+        <location filename="clientform.ui" line="398"/>
+        <location filename="clientform.ui" line="440"/>
+        <location filename="clientform.ui" line="482"/>
         <source>Send</source>
         <translation type="unfinished">发送</translation>
     </message>
     <message>
-        <location filename="clientform.ui" line="291"/>
+        <location filename="clientform.ui" line="163"/>
+        <source>Remote Port:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="clientform.ui" line="216"/>
+        <source>Local Port:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="clientform.ui" line="353"/>
         <source>Buf 0:</source>
         <translation type="unfinished">数据0:</translation>
     </message>
     <message>
-        <location filename="clientform.ui" line="343"/>
+        <location filename="clientform.ui" line="405"/>
         <source>Buf 2:</source>
         <translation type="unfinished">数据2:</translation>
     </message>
     <message>
-        <location filename="clientform.ui" line="385"/>
+        <location filename="clientform.ui" line="447"/>
         <source>Buf 3:</source>
         <translation type="unfinished">数据3:</translation>
     </message>
     <message>
-        <location filename="clientform.ui" line="478"/>
+        <location filename="clientform.ui" line="540"/>
         <source>Output:    </source>
         <translation type="unfinished">收发记录:    </translation>
     </message>
     <message>
-        <location filename="clientform.ui" line="485"/>
+        <location filename="clientform.ui" line="547"/>
         <source>Recv</source>
         <translation type="unfinished">接收</translation>
     </message>
     <message>
-        <location filename="clientform.ui" line="508"/>
+        <location filename="clientform.ui" line="570"/>
         <source>, Send</source>
         <translation type="unfinished">, 发送</translation>
     </message>
     <message>
-        <location filename="clientform.ui" line="538"/>
+        <location filename="clientform.ui" line="600"/>
         <source>Write log</source>
         <translation type="unfinished">写入日志</translation>
     </message>
     <message>
-        <location filename="clientform.ui" line="557"/>
+        <location filename="clientform.ui" line="619"/>
         <source>Clear</source>
         <translation type="unfinished">清除</translation>
     </message>

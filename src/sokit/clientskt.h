@@ -14,12 +14,13 @@ public:
 
 	virtual QString name() const { return "General"; };
 
-	bool plug(const QHostAddress& ip, quint16 port);
+	bool plug(const QHostAddress& ip, quint16 portRemote, quint16 portLocal);
 	void unplug();
 	void send(const QString& data);
 
 	const QHostAddress& addr() const { return m_ip; };
-	quint16 port() const { return m_port; };
+	quint16 portR() const { return m_portR; };
+	quint16 portL() const { return m_portL; };
 
 signals:
 	void unpluged();
@@ -44,7 +45,8 @@ protected:
 
 private:
 	QHostAddress m_ip;
-	quint16 m_port;
+	quint16 m_portR;
+	quint16 m_portL;
 
 	QString m_error;
 };

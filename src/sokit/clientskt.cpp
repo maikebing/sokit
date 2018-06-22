@@ -5,7 +5,7 @@
 #define MAXBUFFER 1024*1024
 
 ClientSkt::ClientSkt(QObject *parent)
-: QObject(parent),m_port(0)
+: QObject(parent),m_portR(0)
 {
 }
 
@@ -13,10 +13,11 @@ ClientSkt::~ClientSkt()
 {
 }
 
-bool ClientSkt::plug(const QHostAddress& ip, quint16 port)
+bool ClientSkt::plug(const QHostAddress& ip, quint16 portRemote, quint16 portLocal)
 {
-	m_ip   = ip;
-	m_port = port;
+	m_ip = ip;
+	m_portR = portRemote;
+	m_portL = portLocal;
 
 	m_error.clear();
 
@@ -85,7 +86,11 @@ bool ClientSktTcp::open()
 	connect(&m_socket, SIGNAL(connected()), this, SLOT(asynConn()));
 	connect(&m_socket, SIGNAL(error(QAbstractSocket::SocketError)), this, SLOT(error()));
 
-	m_socket.connectToHost(addr(), port());
+	if(portL() > 0)
+	{
+		m_socket.bind(portL());
+	}
+	m_socket.connectToHost(addr(), portR());
 
 	return true;
 }
@@ -108,7 +113,7 @@ void ClientSktTcp::error()
 void ClientSktTcp::asynConn()
 {
 	show(QString("TCP connection to %1:%2 opened!")
-		.arg(addr().toString()).arg(port()));
+		.arg(addr().toString()).arg(portR()));
 }
 
 void ClientSktTcp::closed()
@@ -160,7 +165,7 @@ void ClientSktTcp::send(const QByteArray& bin)
 	if (writeLen != srcLen)
 	{
 		show(QString("failed to send data to %1:%2 [%3]")
-			.arg(addr().toString()).arg(port()).arg(writeLen));
+			.arg(addr().toString()).arg(portR()).arg(writeLen));
 		return;
 	}
 
@@ -180,7 +185,7 @@ ClientSktUdp::~ClientSktUdp()
 void ClientSktUdp::asynConn()
 {
 	show(QString("UDP channel to %1:%2 opened!")
-		.arg(addr().toString()).arg(port()));
+		.arg(addr().toString()).arg(portR()));
 }
 
 void ClientSktUdp::closed()
@@ -210,7 +215,11 @@ bool ClientSktUdp::open()
 	connect(&m_socket, SIGNAL(connected()), this, SLOT(asynConn()));
 	connect(&m_socket, SIGNAL(error(QAbstractSocket::SocketError)), this, SLOT(error()));
 
-	m_socket.connectToHost(addr(), port());
+	if(portL() > 0)
+	{
+		m_socket.bind(portL());
+	}
+	m_socket.connectToHost(addr(), portR());
 
 	return true;
 }
@@ -260,7 +269,7 @@ void ClientSktUdp::send(const QByteArray& bin)
 	if (writeLen != srcLen)
 	{
 		show(QString("failed to send data to %1:%2 [%3]")
-			.arg(addr().toString()).arg(port()).arg(writeLen));
+			.arg(addr().toString()).arg(portR()).arg(writeLen));
 		return;
 	}
 

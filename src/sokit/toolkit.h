@@ -12,7 +12,8 @@ class QToolButton;
 typedef struct _IPAddr
 {
 	QHostAddress ip;
-	quint16 port;
+	quint16 portR = 0;
+	quint16 portL = 0;
 } IPAddr;
 
 class TK
@@ -36,7 +37,7 @@ public:
 
 	static QString ipstr(const QHostAddress& addr, quint16 port);
 	static QString ipstr(const QHostAddress& addr, quint16 port, bool tcp);
-	static bool popIPAddr(QComboBox* ip, QComboBox* port, IPAddr& addr);
+	static bool popIPAddr(QComboBox* ip, QComboBox* portR, QComboBox* portL, IPAddr& addr);
 	static void pushIPAddr(QComboBox* ip, QComboBox* port);
 
 	static void pushComboBox(QComboBox* box, const QString& item);

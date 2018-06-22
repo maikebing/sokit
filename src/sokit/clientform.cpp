@@ -7,7 +7,8 @@
 #define SET_KEY_CLT  "/client"
 
 #define SET_KEY_CMBIP  "/ip"
-#define SET_KEY_CMBPT  "/port"
+#define SET_KEY_CMBPTR  "/portRemote"
+#define SET_KEY_CMBPTL  "/portLocal"
 
 #define SET_VAL_LGCLT  "log_client"
 
@@ -43,7 +44,8 @@ void ClientForm::initConfig()
 {
 	QString ssc(SET_SEC_CLT);
 	Setting::lord(ssc+SET_KEY_CMBIP, SET_PFX_CMBITM, *m_ui.cmbAddr);
-	Setting::lord(ssc+SET_KEY_CMBPT, SET_PFX_CMBITM, *m_ui.cmbPort);
+	Setting::lord(ssc + SET_KEY_CMBPTR, SET_PFX_CMBITM, *m_ui.cmbPortRemote);
+	Setting::lord(ssc + SET_KEY_CMBPTL, SET_PFX_CMBITM, *m_ui.cmbPortLocal);
 
 	QString skl(SET_SEC_DIR); skl += SET_KEY_LOG;
 	skl = Setting::get(skl, SET_KEY_CLT, SET_VAL_LGCLT);
@@ -56,7 +58,8 @@ void ClientForm::saveConfig()
 {
 	QString ssc(SET_SEC_CLT);
 	Setting::save(ssc+SET_KEY_CMBIP, SET_PFX_CMBITM, *m_ui.cmbAddr);
-	Setting::save(ssc+SET_KEY_CMBPT, SET_PFX_CMBITM, *m_ui.cmbPort);
+	Setting::save(ssc + SET_KEY_CMBPTR, SET_PFX_CMBITM, *m_ui.cmbPortRemote);
+	Setting::save(ssc + SET_KEY_CMBPTL, SET_PFX_CMBITM, *m_ui.cmbPortLocal);
 
 	QString skl(SET_SEC_DIR); skl += SET_KEY_LOG;
 	Setting::set(skl, SET_KEY_CLT, property(SET_SEC_DIR).toString());
@@ -112,7 +115,8 @@ void ClientForm::trigger(bool checked)
 	unplug();
 
 	m_ui.cmbAddr->setDisabled(checked);
-	m_ui.cmbPort->setDisabled(checked);
+	m_ui.cmbPortRemote->setDisabled(checked);
+	m_ui.cmbPortLocal->setDisabled(checked);
 
 	QToolButton* btn = qobject_cast<QToolButton*>(sender());
 	if (checked && !plug(btn==m_ui.btnTcp))
@@ -133,7 +137,7 @@ bool ClientForm::plug(bool istcp)
 	}
 
 	IPAddr addr;
-	bool res  = TK::popIPAddr(m_ui.cmbAddr, m_ui.cmbPort, addr);
+	bool res  = TK::popIPAddr(m_ui.cmbAddr, m_ui.cmbPortRemote, m_ui.cmbPortLocal, addr);
 
 	if (res)
 	{
@@ -162,10 +166,10 @@ bool ClientForm::plug(bool istcp)
 
 	if (res && skt)
 	{
-		res = skt->plug(addr.ip, addr.port);
+		res = skt->plug(addr.ip, addr.portR, addr.portL);
 
 		if (res)
-			TK::pushIPAddr(m_ui.cmbAddr, m_ui.cmbPort);
+			TK::pushIPAddr(m_ui.cmbAddr, m_ui.cmbPortRemote);
 	}
 
 	return res;
