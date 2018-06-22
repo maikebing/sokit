@@ -368,10 +368,10 @@
       <CLRThreadAttribute>MTAThreadingAttribute</CLRThreadAttribute>
     </Link>
     <PreBuildEvent>
-      <Command>lupdate.exe $(ProjectDir)..\..\..\src\sokit\ -ts $(ProjectDir)..\..\..\src\sokit\$(ProjectName).ts</Command>
+      <Command>$(QTDIR)\bin\lupdate.exe $(ProjectDir)..\..\..\src\sokit\ -ts $(ProjectDir)..\..\..\src\sokit\$(ProjectName).ts</Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>lrelease $(ProjectDir)..\..\..\src\sokit\$(ProjectName).ts -qm $(OutDir)$(ProjectName).lan</Command>
+      <Command>$(QTDIR)\bin\lrelease $(ProjectDir)..\..\..\src\sokit\$(ProjectName).ts -qm $(OutDir)$(ProjectName).lan</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='release|Win32'">
@@ -399,10 +399,10 @@
       <CLRThreadAttribute>MTAThreadingAttribute</CLRThreadAttribute>
     </Link>
     <PreBuildEvent>
-      <Command>lupdate.exe $(ProjectDir)..\..\..\src\sokit\ -ts $(ProjectDir)..\..\..\src\sokit\$(ProjectName).ts</Command>
+      <Command>$(QTDIR)\bin\lupdate.exe $(ProjectDir)..\..\..\src\sokit\ -ts $(ProjectDir)..\..\..\src\sokit\$(ProjectName).ts</Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>lrelease $(ProjectDir)..\..\..\src\sokit\$(ProjectName).ts -qm $(OutDir)$(ProjectName).lan</Command>
+      <Command>$(QTDIR)\bin\lrelease $(ProjectDir)..\..\..\src\sokit\$(ProjectName).ts -qm $(OutDir)$(ProjectName).lan</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
